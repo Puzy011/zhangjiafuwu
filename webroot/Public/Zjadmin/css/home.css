@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* CSS Document */
+body,div{
+	margin:0;
+	padding:0;
+}
+.main_top{
+	border-top:3px solid #ebebeb;
+	border-bottom:5px solid #ebebeb;
+	display:flex;
+}
+.user{
+	float:left;
+	width:50%;
+	text-align:center;
+	margin:17% auto;
+}
+.user_right{
+	width:50%;
+	float:right;
+	margin:4% auto;
+	
+}
+.user_right span{
+	border-bottom:1px solid #ebebeb;
+	display:flex;
+	margin:8% 2%;
+}
+.num{
+	color:#ed1c24;
+}
+.center_one{
+	width:100%;
+	padding-top:10%;
+	text-align:center;
+	vertical-align:middle;
+	display:flex;
+}
+.center_one span{
+	border:1px solid #0171c0;
+	border-radius:5%;
+	color:#0171c0;
+	padding:3%;
+	width:80px;
+	margin:auto 10%;
+}
+.center_one  span a{
+color: #0171c0;
+text-decoration:none;
+}
+.center_one b{
+	/*background-color:#ed1c24;*/
+	height:10px;
+	width:10px;
+	border:none;
+	display:block;
+	border-radius:10px;
+	position:absolute;
+	margin-left:23%;
+	margin-top:-10%;
+}
+.footer{
+	bottom:0px;
+	position:fixed;
+	width:100%;
+}
+.password{
+	display:block;
+	height:50px;
+	border:none;
+	outline:hidden;
+	background-color:#f2f2f2;
+	width:100%;
+	border-bottom:3px solid #fff;
+}
+.out{
+	display:block;
+	height:50px;
+	border:none;
+	outline:hidden;
+	background-color:#f2f2f2;
+	width:100%;	
+}

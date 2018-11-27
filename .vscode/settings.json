@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/.DS_Store": false,
+        "**/.git": false,
+        "**/.hg": false,
+        "**/.svn": false,
+        "**/CVS": false
+    },
+    "search.exclude": {
+        "**/bower_components": false,
+        "**/node_modules": false
+    }
+}

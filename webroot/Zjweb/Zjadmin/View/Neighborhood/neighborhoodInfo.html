@@ -1,0 +1,79 @@
+<extend name="Public/base" />
+<block name="body">
+<link rel="stylesheet" href="__CSS__/neig.css" type="text/css" />
+<!DOCTYPE html>
+<html>
+  <head>    
+    <title>掌家门户</title>
+	<meta  charset="UTF-8">
+    <meta name="keywords" content="keyword1,keyword2,keyword3">
+    <meta name="description" content="this is my page">
+    <meta name="content-type" content="text/html; charset=UTF-8">    
+  
+<style type="text/css"> 
+.opratea span{
+
+ color:#717575;
+
+}
+.opratea a{
+	margin-top:10px;
+}
+.headlogo{
+ list-style-type:none;
+ position:absolute;
+ top:1%;
+
+}
+.headlogo img{
+	 height:15px;
+	 width:15px;
+
+}
+.opratea{
+	margin-top:20px;
+
+}
+</style>	
+ </head> 
+ <body>
+	<div style="border:2px #EEEEEE solid;margin:8 0;max-width:700px;max-height:450px;background-color:white;" > 						
+			<div style="margin:10px 0 0 10px">
+					<img src="{$data.mpic}" style="margin:5 0 0 0;display:block;float:left;border-radius:3px;" height="45px" width="45px">
+					<a style="font-size:15px;margin-left:15px; text-decoration:none; color:black;"href="PersonalData.jsp">{$data.nickname}</a>						
+					<div style="font-size:10"> 
+						<span style="font-size:11px; margin-left:15px; float:left;color:black;display:block;width:9.5em;overflow:hidden;white-space:nowrap;">{$data.time|time_format}</span>
+					</div>						
+			</div>
+			<br>
+			<div style="margin:10px 0 10px 10px; max-width:700px;color:#717575;font-size:15px;"> 
+				<div>{$data.content}</div>			
+			</div>
+			<div style="width:500px; margin:0px auto;">				
+				
+				<a><img style="width:500px; height:300px;"src="{$data.pic}"></a>	
+												
+			</div>
+			<div class="opratea"style="width:500px; margin:0px auto;">
+					<a><img style="height:18px;width:18px;"src="__IMG__/good.png"></a><span>（{$data.click}）</span>
+					<a><img  style="height:18px;width:18px;"src="__IMG__/commend.png"></a><span>（{$data.number}）</span>
+					<a style="margin-left:330px;font-size:10; text-decoration:none;color:red;" href="{:U('Neighborhood/deleteNeighborhood?id='.$data['id'])}">删除</a>
+			</div>
+						<br> 
+						 							
+	</div>
+	        			  <div class="clear"></div>
+  
+
+ </body>
+ </html>
+</block>
+<block name="script">
+
+
+	<script type="text/javascript">
+
+    //导航高亮
+    highlight_subnav('{:U('Neighborhood/neighborhoodList')}');
+	</script>
+</block>

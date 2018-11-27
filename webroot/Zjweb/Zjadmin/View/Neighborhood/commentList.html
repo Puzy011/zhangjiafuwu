@@ -1,0 +1,52 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<link rel="stylesheet" href="__CSS__/bootstrap/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="__CSS__/three.css" type="text/css" />
+
+   <!-- 数据列表 -->
+    <div class="data-table table-striped">
+
+    	<div>
+                        </div>
+						    <table id="travel">
+                                <tbody>
+                                <tr class="">  		
+                                        <th>业主名字</th>
+                                        <th>详细地址</th>
+                                       <th>评论内容</th>
+                                        <th>评论时间</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    		<notempty name="data">
+		<volist name="data" id="vo">
+                                    <tr class="">  		
+                                        
+                                         <td>{$vo.name}</td>
+            							<td>{$vo.floor}{$vo.household}</td>
+										<td>{$vo.content} </td>
+										<td>{$vo.time|time_format}</td> 
+										<td><a class="confirm ajax-get" style="color:#0000E3;" href="{:U('Neighborhood/deleteComment?id='.$vo['id'].'&nid='.$vo['neig_id'])}">删除</a></td>
+                                    </tr>
+                             		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> 啊哦！该内容暂时还没有哦! </td>
+		</notempty>
+                                </tbody>
+                            
+                            </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+
+</block>
+<block name="script">
+
+
+	<script type="text/javascript">
+
+    //导航高亮
+    highlight_subnav('{:U('Neighborhood/neighborhoodList')}');
+	</script>
+</block>

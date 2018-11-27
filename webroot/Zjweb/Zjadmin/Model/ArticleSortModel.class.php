@@ -1,0 +1,135 @@
+<?php
+
+namespace Zjadmin\Model;
+use Think\Model;
+
+/**
+ * 分类模型
+ */
+class ArticleSortModel extends Model{
+
+    protected $_validate = array(
+        array('name', 'require', '名称不能为空', self::EXISTS_VALIDATE, 'regex', self::MODEL_BOTH),
+        array('name', '', '名称已经存在', self::VALUE_VALIDATE, 'unique', self::MODEL_BOTH),
+       
+    );
+	
+ /* 自动完成规则 */
+    protected $_auto = array(
+   
+      array('pid','', self::MODEL_INSERT),
+
+    );
+	
+    /**
+     * 获取分类详细信息
+     * @param  milit   $id 分类ID或标识
+     * @param  boolean $field 查询字段
+     * @return array     分类信息
+     */
+    public function info($id, $field = true){
+        /* 获取分类信息 */
+        $map = array();
+        if(is_numeric($id)){ //通过ID查询
+            $map['id'] = $id;
+        } else { //通过标识查询
+            $map['name'] = $id;
+        }
+        return $this->field($field)->where($map)->find();
+    }
+	
+
+    /**
+     * 获取分类树，指定分类则返回指定分类极其子分类，不指定则返回所有分类树
+     * @param  integer $id    分类ID
+     * @param  boolean $field 查询字段
+     * @return array          分类树
+     */
+    public function getTree($id = 0, $field = true){
+        /* 获取当前分类信息 */
+        if($id){
+            $info = $this->info($id);
+            $id   = $info['id'];
+        }
+
+        /* 获取所有分类 */
+      
+        $list = $this->field($field)->where(true)
+        ->limit($page->firstRow.','.$page->listRows)->order('id')->select();
+       
+
+        return $list;
+    }
+
+    /**
+     * 获取指定分类的同级分类
+     * @param  integer $id    分类ID
+     * @param  boolean $field 查询字段
+     * @return array
+     */
+    public function getSameLevel($id, $field = true){
+        $info = $this->info($id, 'pid');
+        $map = array('pid' => $info['pid'], 'status' => 1);
+        return $this->field($field)->where($map)->order('sort')->select();
+    }
+
+    /**
+     * 更新分类信息
+     * @return boolean 更新状态
+     */
+    public function update(){
+        $data = $this->create();
+        if(!$data){ //数据对象创建错误
+            return false;
+        }
+  
+        /* 添加或更新数据 */
+        if(empty($data['id'])){
+            $res = $this->add();
+        }else{
+            $res = $this->save();
+        }
+
+        //更新分类缓存
+        S('sys_category_list', null);
+
+        //记录行为
+     //   action_log('update_category', 'category', $data['id'] ? $data['id'] : $res, UID);
+
+        return $res;
+    }
+
+    /**
+     * 查询后解析扩展信息
+     * @param  array $data 分类数据
+     */
+    protected function _after_find(&$data, $options){
+        /* 分割模型 */
+        if(!empty($data['model'])){
+            $data['model'] = explode(',', $data['model']);
+        }
+
+        /* 分割文档类型 */
+        if(!empty($data['type'])){
+            $data['type'] = explode(',', $data['type']);
+        }
+
+        /* 分割模型 */
+        if(!empty($data['reply_model'])){
+            $data['reply_model'] = explode(',', $data['reply_model']);
+        }
+
+        /* 分割文档类型 */
+        if(!empty($data['reply_type'])){
+            $data['reply_type'] = explode(',', $data['reply_type']);
+        }
+
+        /* 还原扩展数据 */
+        if(!empty($data['extend'])){
+            $data['extend'] = json_decode($data['extend'], true);
+        }
+    }
+
+}
+
+?>

@@ -1,0 +1,95 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<script type="text/javascript" src="__JS__/new_geo.js"></script>
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>	
+	<link rel="stylesheet" href="__CSS__/bootstrap/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="__CSS__/one.css" type="text/css" />
+<body>
+<div class="tab">
+				<div class="tab_box">
+					<div>
+    <form action="{:U('saveUppic')}" method="post" class="form-horizontal">
+          <div class="plot">
+            <span>用户名称</span>
+                <input type="text" name="username" value="{$user.username}" readonly="true"/>
+          
+            <span>物业名称</span>
+                <input type="text" name="nickname" value="{$user.nickname}"/>
+          
+            <span>物业联系电话</span>
+                <input type="text" name="cellphone" value="{$user.cellphone}"/>
+         
+				     <span>上传头像<span class="check-tips"></span></span>
+                        <div class="controls">
+                        <!-- 上传图片到文件夹 -->
+							<input type="file" id="upload_picture_img"/>
+						<!-- 把上传到文件夹的图片的名字的值保存到数据库的表的相应字段名中 -->	
+							<input type="hidden" name="pic" id="cover_id_img" value="{$data['pic']}"/>
+						    <div class="upload-img-box">
+						    <!-- 如果不为空就显示图片 -->
+							    <notempty name="user['pic']">
+								    <div class="upload-pre-item"><img src="{$user.pic}"/></div>
+							    </notempty>
+						    </div>
+						</div> 
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+        </div>
+    </form>
+    			</div>
+					
+				
+				</div>
+			</div>
+    </body>
+   <script type="text/javascript">
+	//上传图片
+	/* 初始化上传插件 */
+	$("#upload_picture_img").uploadify({
+		"height"          : 30,
+		"swf"             : "__STATIC__/uploadify/uploadify.swf",
+		"fileObjName"     : "download",
+		"buttonText"      : "上传图片",
+		"uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+		"width"           : 120,
+		'removeTimeout'	  : 1,
+		'fileTypeExts'	  : '*.jpg; *.png; *.gif; *.jpeg;',
+		"onUploadSuccess" : uploadPictureimg,
+		'onFallback' : function() {
+			alert('未检测到兼容版本的Flash.');
+		}
+	});
+	
+	function uploadPictureimg(file, data){
+		var data = $.parseJSON(data);
+		var src = '';
+		
+		if(data.status){
+		  
+			$("#cover_id_img").val(data.path);
+			src = data.url || '__ROOT__' +'/'+ data.path;
+			$("#cover_id_img").parent().find('.upload-img-box').html(
+				'<div class="upload-pre-item"><img src="' + src + '"/></div>'
+			);
+		} else {
+			updateAlert(data.info);
+			setTimeout(function(){
+				$('#top-alert').find('button').click();
+				$(that).removeClass('disabled').prop('disabled',false);
+			},1500);
+		}
+	}
+
+</script>
+</block>
+<block name="script">
+
+	<script type="text/javascript">
+
+    //导航高亮
+    highlight_subnav('{:U('User/property')}');
+	</script>
+</block>

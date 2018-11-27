@@ -1,0 +1,133 @@
+<style type="text/css">
+
+table{
+	font-size:48px;
+	border:1px solid #101010;
+}
+tr{
+	border:1px solid #101010;
+}
+td{
+	border:1px solid #101010;
+}
+th{
+	border:1px solid #101010;
+}
+.page{
+	font-size:58px;
+}
+.form-item{
+	font-size:48px;
+}
+select{
+	width:360px;
+	height:80px;
+	font-size:48px;
+}
+option{
+	font-size:48px;
+}
+input{
+	font-size:48px;
+}
+button{
+	font-size:48px;
+	
+}
+a{
+	
+	text-decoration:none;
+}
+</style>
+
+<body>
+	<!-- 标题栏 -->
+	 <form action="{:U()}" method="post" class="form-horizontal">
+	  <div class="form-item">
+	  			<div>
+                <select name="type">
+				   <option value="0">请选择服务类型</option>
+                    <volist name="servicelist" id="service">
+					<option value="{$service.id}" >{$service.title}</option>
+					</volist>
+				</select>
+                <select name="residential_id">
+                <option value="0">请选择小区</option>
+					<volist name="residentiallist" id="residential">
+						<option value="{$residential.id}">{$residential.residential_name}</option>
+					</volist>
+				</select>
+				 <select name="status">
+                	<option value="-4">状态</option>
+                	<option value="0">已接单</option>
+					<option value="1">进行中</option>
+					<option value="2">收件中</option>
+					<option value="3">寄件中</option>
+					<option value="-1">已完成</option>
+				</select>
+				</div>
+				
+				<div class="form-item">
+				<label>订单编号</label>
+				<input type="text" name="order_number" value="">
+				<button class="btn" type="submit" target-form="form-horizontal">查询</button>
+        </div>
+        </form>
+    <!-- 数据列表 -->
+    <div>
+	<table>
+    <thead>
+        <tr>
+		<th>类型</th>
+		<th>业主姓名</th>
+		<th>小区</th>
+		<th>详细地址</th>
+		<th>手机号码</th>
+		<th>备注</th>
+		<th>订单编号</th>
+		<th>金额</th>
+		<th>操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="list">
+		<volist name="list" id="vo">
+		<tr>
+			<td>{$vo.title}</td>
+			<td>{$vo.name}</td>
+			<td>{$vo.residential_name}</td>
+			<td>{$vo.address}</td>
+			<td>{$vo.phone}</td>
+			<td>{$vo.describe} </td>
+			<td>{$vo.order_number} </td>
+			<td>{$vo.price}</td>
+			<td><eq name="vo.status" value="0">
+				<a href="{:U('ServiceOrder/phoneChangeStatus?id='.$vo['id'])}" class="confirm"  style="color:#74d833;">已接单</a>
+				</eq>
+				<eq name="vo.status" value="2">
+				<a href="{:U('ServiceOrder/phoneChangeStatus?id='.$vo['id'])}" class="confirm" style="color:#0000E3;">收件中</a>
+				</eq>
+				<eq name="vo.status" value="3">
+				<a href="{:U('ServiceOrder/phoneChangeStatus?id='.$vo['id'])}" class="confirm" style="color:#0000E3;">寄件中</a>
+				</eq>
+				<eq name="vo.status" value="1">
+				<a href="{:U('ServiceOrder/phoneChangeStatus?id='.$vo['id'])}" class="confirm" style="color:#0000E3;">进行中</a>
+				</eq>
+				<eq name="vo.status" value="-1">
+				<span style="color:#FF0000;">已完成</span>
+				</eq>
+				</td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+         <a class="btn" href="{:U('Index/index')}">返回首页</a>
+    </div>
+</body>
+

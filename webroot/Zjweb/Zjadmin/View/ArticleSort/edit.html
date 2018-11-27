@@ -1,0 +1,66 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+	<div class="main-title">
+		<h2>{:isset($info['id'])?'编辑':'新增'}分类</h2>
+	</div>
+	<div class="tab-wrap">
+
+		<div class="tab-content">
+			<form action="{:U()}" method="post" class="form-horizontal">
+				<!-- 基础 -->
+				<div id="tab1" class="tab-pane in tab1">
+			
+					<div class="form-item">
+						<label class="item-label">
+							分类名称<span class="check-tips">（名称不能为空）</span>
+						</label>
+						<div class="controls">
+							<input type="text" name="name" class="text input-large" value="{$info.name|default=''}">
+						</div>
+					</div>
+					<div class="form-item">
+						<label class="item-label">
+						描述</label>
+						<div class="controls">
+							<input type="text" name="remark" class="text input-large" value="{$info.remark|default=''}">
+						</div>
+					</div>
+						<div class="form-item">
+						<label class="item-label">
+							是否开启
+						</label>
+						<div class="controls">
+						    <label class="inline radio"><input type="radio" name="status" value="1" checked>开启</label>
+							<label class="inline radio"><input type="radio" name="status" value="0" >禁止</label>
+							
+						</div>
+					</div>
+
+				</div>
+
+				
+
+				<div class="form-item">
+					<input type="hidden" name="id" value="{$info.id|default=''}">
+					<input type="hidden" name="pid" value="{:isset($ArticleSort['id'])?$ArticleSort['id']:$info['pid']}">
+					
+					<button type="submit" id="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 定</button>
+					<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		<present name="info.id">
+
+		Think.setValue("status", {$info.status|default=1});
+
+		</present>
+
+	</script>
+</block>

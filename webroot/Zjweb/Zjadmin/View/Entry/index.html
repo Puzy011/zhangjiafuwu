@@ -1,0 +1,49 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>处理物业提现请求</h2>
+	</div> 
+	<div class="cf">
+		
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<th class="">物业id</th>
+		<th class="">持卡人姓名</th>
+		<th class="">提现金额</th>		
+		<th class="">银行卡号</th>
+		<th class="">提现的时间</th>
+		<th class="">处理状态</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="entry">
+		<volist name="entry" id="vo">
+		<tr>
+            <td>{$vo.admin_id}</td>
+			<td>{$vo.name} </td> 
+			<td >{$vo.withdrawalamount}</td>
+			<td>{$vo.bankcard}</td>
+			<td>{$vo.moneytime|time_format}</td>
+			<td>
+			     <if condition="($vo.status eq 1)"><a href="{:U('Entry/agreement?id='.$vo['admin_id'].'&money='.$vo['withdrawalamount'].'&autoid='.$vo['id'])}">完成汇款</a>
+			            <else />已提现给物业
+			     </if>
+			</td>  
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> 啊哦！暂时还没有申请提现的哦! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>

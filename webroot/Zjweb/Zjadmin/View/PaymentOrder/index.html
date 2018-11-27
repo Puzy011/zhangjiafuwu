@@ -1,0 +1,93 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>缴费列表</h2>
+	</div>
+        <!-- 高级搜索 -->
+		<div class="search-form fr cf">
+			<div class="sleft">
+				<input type="text" name="nickname" class="search-input" value="{:I('nickname')}" placeholder="请输入用户昵称或者ID">
+				<a class="sch-btn" href="javascript:;" id="search" url="{:U('index')}"><i class="btn-search"></i></a>
+			</div>
+		</div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">ID</th>
+		<th class="">业主姓名</th>
+		<th class="">小区名称</th>
+		<th class="">地址</th>
+		<!-- <th class="">水费</th>
+		<th class="">电费</th>
+		<th class="">停车费</th>
+		<th class="">物业费</th>
+		<th class="">应缴金额</th> -->
+		<th class="">缴费金额</th>
+		<th class="">时间</th>
+		<th class="">状态</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="PaymentOrder">
+		<volist name="PaymentOrder" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+			<td>{$vo.mid} </td>
+			<td>{$vo.people}</td>
+			<td>{$vo.community}</td>
+			<td>{$vo.address}</td>
+			<!-- <td>{$vo.water}</td>
+			<td><span>{$vo.electricity}</span></td>
+			<td><span>{$vo.car}</span></td>
+			<td>{$vo.property}</td>
+			<td>{$vo.paid}</td> -->
+			<td>{$vo.paymoney}</td>
+			<td>{$vo.time}</td>
+			<td>{$vo.status}</td>
+			<td><a href="{:U(printview)}" class="confirm">打印发票</a>
+                </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+	<script type="text/javascript">
+	//搜索功能
+	$("#search").click(function(){
+		var url = $(this).attr('url');
+        var query  = $('.search-form').find('input').serialize();
+        query = query.replace(/(&|^)(\w*?\d*?\-*?_*?)*?=?((?=&)|(?=$))/g,'');
+        query = query.replace(/^&/g,'');
+        if( url.indexOf('?')>0 ){
+            url += '&' + query;
+        }else{
+            url += '?' + query;
+        }
+		window.location.href = url;
+	});
+	//回车搜索
+	$(".search-input").keyup(function(e){
+		if(e.keyCode === 13){
+			$("#search").click();
+			return false;
+		}
+	});
+	</script>
+</block>

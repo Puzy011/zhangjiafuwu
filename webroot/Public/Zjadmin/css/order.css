@@ -1,0 +1,115 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+	margin:0;
+	padding:0;
+}
+.main{
+	border-top:5px solid #ebebeb;
+}
+h3{
+	text-align:center;
+	padding:5%;
+}
+.main_show{
+	padding-left:5%;
+	line-height:35px;
+}
+.show{
+	border:1px solid #cdcdcd;
+	width:50%;
+	height:30px;
+}
+.all{
+	margin-top:8%;
+	display:flex;
+}
+.all span{
+    border: 1px solid #cdcdcd;
+    margin-left: 6%;
+    padding: 1%;
+	margin-right: 2%;
+}
+.all_img{
+	    display: flex;
+    margin-top: 20%;
+}
+.all_img img{
+	width: 130px;
+    height: 130px;
+    margin-top: -25px;
+	margin-left:6%;
+}
+.both{
+	display: block;
+    float: none;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    clear: both;
+    visibility: hidden;
+}
+hr{
+	margin:5%;
+	height:1px;
+	border:none;
+	border-bottom:1px solid #cdcdcd;
+}
+h5{
+	padding:5%;
+	font-size:20px;
+}
+.state{    
+    border: 1px solid #cdcdcd;
+    border-radius: 5px;
+    margin: 5%;
+    padding: 8%;
+}
+.state_one{
+	display:flex;
+}
+.state_one img{
+	float:left;
+}
+.state_one span{
+	    padding-top: 5px;
+    /* width: 29%; */
+    display: block;
+    float: left;
+    margin-left: 7%;
+	color:#42ba01;
+}
+.state_two{
+	margin-left:12px;
+}
+.state_three{
+	display:flex;
+}
+.state_three span{
+	margin-top:4px;
+	margin-left:6%;
+}
+.btn{
+	padding-top:10%;
+	text-align:center;
+}
+.btn_on{
+    color: #cdcdcd;
+    background-color: white;
+    border: 1px solid;
+    width: 90px;
+    height: 40px;
+    border-radius: 5px;
+	margin-right:4%;
+}
+.btn_fan{
+	color: #0171c0;
+    background-color: white;
+    border: 1px solid #0171c0;
+    width: 90px;
+    height: 40px;
+    border-radius: 5px;
+	margin-left:4%;
+}

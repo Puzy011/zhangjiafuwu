@@ -1,0 +1,308 @@
+@charset "utf-8";
+/* CSS Document */
+@charset "utf-8";
+/* CSS Document */
+
+*{margin: 0; padding: 0;font-family:微软雅黑; }
+
+.topbox{ 
+	width:100%;
+	/*background: url(../image/picture_11.png) no-repeat bottom;
+	background-size:100%;
+	background-position:top;*/
+}
+.topbox img{
+	width:100%;
+}
+.textone{
+	display:block;
+	color:#FFF;
+	text-align:center;
+	font-size:40px;
+	padding-top:10%;	
+}
+.textwo{
+	display:block;
+	color:#FFF;
+	text-align:center;
+	font-size:30px;
+}
+.two_two{
+	font-size:40px;
+}
+.textree{
+	display:block;
+	color:#FFF;
+	text-align:center;
+}
+.message{
+	width:100%;
+	margin:0 auto;
+    zoom: 1;
+}
+.message_us{
+	width:50%;
+	float:left;
+}
+.cr {
+    display: block;
+    float: none;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    clear: both;
+    visibility: hidden;
+}
+.tab{ 
+	clear:both;
+	width:90%;
+	margin:2% 5%;
+}
+.tab .tab_menu { 
+	clear:both;
+	margin:1% 15%;
+	width:70%;
+	background-color:#FFF;
+	height:100px;
+	padding-left:1%;
+}
+.tab .tab_menu li { 
+	float:left; 
+	text-align:center; 
+	cursor:pointer; 
+	list-style:none; 
+	/*padding:5% 9%;*/
+	width:24%;
+	padding-top:5%;
+	border-bottom:none;
+	font-size:32px;
+	color:#828282;	
+}
+.tab .tab_menu li.hover {
+	color:#656565;
+}
+.tab .tab_menu li.selected { 
+	color:#3f67ce;
+}
+.tab .tab_box { 
+	clear:both;
+	margin:auto 15%;
+	padding-bottom:10%;
+}
+.tab .hide{
+	display:none
+}
+
+.clothing img{
+	display:block;
+	width:100%;
+}
+.clothing_span{
+	background-color:#FFF;
+	text-align:center;
+	height:230px;
+	top:0;
+	display:block;
+}
+.clothing_span h2{
+	font-size:36px;
+	padding-top:6%;
+	padding-bottom:6%;
+}
+.clothing_span span{
+	display:block;
+	color:#828282;
+	font-family:微软雅黑;
+	line-height:50rpx;
+	overflow:hidden;
+	font-size:24px;
+	white-space:normal;
+	text-overflow:ellipsis;
+	display:-webkit-box;
+	word-break:break-all;
+	-webkit-box-orient:vertical;
+	-webkit-line-clamp:2;
+
+}
+.clothimg_all_time{
+	background-color:#FFF;
+	margin-top:2%;
+	margin-bottom:7%;
+	height:50px;
+}
+.clothimg_time{
+	color:#828282;
+	padding:2%;
+	display:block;
+	width:20%;
+}
+.clothimg_look{
+	display:block;
+	float:right;
+	font-weight:800;
+	margin:-5% 3%;
+}
+.clothimg_look a{
+	color:#5276D2;
+}
+.recommend_all{
+	width:50%;
+	float:right;
+}
+.recommend{
+	margin-top:2%;
+}
+.recommend a:hover{
+	color:#333;
+}
+.recommend_one{
+	height:200px;
+	background-color:#FFF;
+	/*margin:auto 15%;*/
+	margin-right:15%;
+}
+.recommend_img_one{
+	height:92%;
+	margin:1%;
+	float:left;
+	display:block;
+}
+.recommend_img_two{
+	display:block;
+	position:absolute;
+	margin:0.4%;
+}
+.recommend_one span{
+	display:block;
+	text-align:center;
+	font-size:24px;
+	padding-top:10%;
+}
+.recommend_two{
+	width:50%;
+	margin-left:50%;
+	margin-top:2%;
+}
+.recommend_one_two{
+	height:200px;
+	background-color:#FFF;
+	margin:auto 15%;
+}
+
+
+.section-content h1{
+	color:#89a2e1;
+	display:block;
+	text-align:center;
+	padding:5%;
+}
+.about_us_span{
+	display:block;
+	text-align:center;
+	margin:auto 20%;
+	font-size:20px;
+}
+.about_us{
+	margin:auto 6%;
+}
+.about_us img{
+	margin:auto 10%;
+	padding:5%;
+}
+
+
+.bottom_img_span{
+	background-color:#3C3C3C;
+	display:block;
+	padding-bottom:5%;
+	height:50%;
+}
+.bottom_one {
+	    display:block;
+		width:50%;
+		margin-left:14.8%;
+		padding-top:4%;
+}
+.bottom_one span{
+	margin-left:4%;
+	color:#FFF;
+}
+.bottom_two{
+	    margin-left:14.5%;
+		padding-top:3%;
+		width:50%;
+}
+.bottom_two span{
+	margin-left:3%;
+	color:#FFF;
+}
+.touch{
+	width:30%;
+	display:block;
+	float:right;
+	font-size: 18px;
+	color:#FFF;
+	margin-top:-14%;
+}
+.touch{
+	width:30%;
+	display:block;
+	float:right;
+	font-size: 18px;
+	color:#FFF;
+	margin-top:-12%;
+}
+.touch b{
+	font-size:18px;
+	font-weight:inherit;
+}
+.touch_us img{
+	width:40%;
+	margin-top:2%;
+}
+.touch hr{
+	width:10%;
+	height:1px;
+	border:none;
+    background-color: #5276D2;
+    margin-left: 24%;
+}
+.fotter{
+	background-color:#323232;
+	color:#FFF;
+	display:block;
+	text-align:center;
+	padding-top:3%;
+	padding-bottom:3%;
+	font-size:15px;
+}
+.construction img{
+	width:100%;
+}
+
+.change{
+	top: 75px;
+}
+.change-job{
+	position: absolute;
+	color: #000;
+	left: 23.5%;
+	top: 75px;
+	z-index: 5;
+	font-size: 13px;
+	font-family:"微软雅黑";
+}
+.change-job a{
+	color: #000;
+}
+.change-job a:hover{
+	color: #5276D2;
+	cursor: pointer;
+	text-decoration: none;
+}
+.change-job span{
+	color: #000;
+	cursor: default;
+}
+

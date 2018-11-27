@@ -1,0 +1,115 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+		<script type="text/javascript" src="__JS__/new_geo.js"></script>
+		<div class="tab-wrap">
+		<ul class="tab-nav nav">
+		<li class="current"><a href="{:U('updatepassword')}">修改管理员资料</a></li>
+		</ul>
+		<div class="tab-content">
+	<!-- 修改密码表单 -->
+	<form action="{:U('User/submitAdmin')}" method="post" class="form-horizontal">
+		<div class="form-item">
+			<label class="item-label">城市：</label>
+			<div class="controls">
+				<!-- <select name="proid" id="proid"  >						  
+				                  <option value="0" <eq name="info['proid']" value="">selected</eq> >请选择省份</option>
+				              	  <volist name="Area" id="provo">
+				  <option value="{$provo['fid']}" <eq name="info['proid']" value="$provo.fid">selected</eq> >{$provo.name}</option>
+				  </volist>						  
+				</select>
+				<select id="cityid" name="cityid">
+							      <option value="0" <eq name="info['cityid']" value="">selected</eq> >请选择城市</option>
+				  <volist name="City" id="cityvo">
+				  <option value="{$cityvo['fid']}" <eq name="info['cityid']" value="$cityvo.fid">selected</eq> >{$cityvo.name}</option>
+				  </volist>	
+				</select> -->
+					<!-- 使用js文件调用省市 -->
+				<body onload="setup();preselect('请选择');promptinfo();">
+					<h3>选择所在省份</h3>
+				      		<select class="select" name="proid" id="s1" >
+				        		<option>{$data['proid']}</option>
+				      		</select>
+				      		<select class="select" name="cityid" id="s2" >
+				        		<option>{$data['cityid']}</option>
+				      		</select>
+				</body>
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">客服电话：</label>
+			<div class="controls">
+				<input type="text" name="telephone" class="text input-large" value="{$info['telephone']}"  />
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">联系地址：</label>
+			<div class="controls">
+				<input type="text" name="address" class="text input-large"  value="{$info['address']}" />
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">联系电话：</label>
+			<div class="controls">
+				<input type="text" name="cellphone" class="text input-large" value="{$info['cellphone']}"  />
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">联系人：</label>
+			<div class="controls">
+				<input type="text" name="contact" class="text input-large" value="{$info['contact']}"  />
+			</div>
+		</div>
+		<div class="form-item">
+		    <input type="hidden" name="uid" class="text input-large" value="{$uid}"  />
+			<button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">确 认</button>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+		</div>
+	</form>
+			</div>
+	</div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+
+function getSelectVal(defaultCity){ 
+	 
+   $.getJSON("{:U('Member/proshow')}",{proid:$("#proid").val()},function(json){ 
+         var cityid = $("#cityid"); 
+        $("option",cityid).remove(); //清空原有的选项 
+        $.each(json,function(index,array){ 
+		    
+            var option = "<option value='"+array['fid']+"'>"+array['name']+"</option>"; 
+            cityid.append(option); 
+        }); 
+		cmbSelect(cityid, defaultCity)
+    }); 
+		 
+} 
+				   
+$(function(){ 
+    $("#proid").change(function(){ 
+	   getSelectVal(); 
+    }); 
+	
+	
+	   
+});
+//导航高亮
+highlight_subnav('{:U('User/index')}');
+</script>
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+</block>
+<!-- 用于地址三级联动用的 -->
+<script>
+function promptinfo()
+{
+  var address = document.getElementById('address');
+  var s1 = document.getElementById('s1');
+  var s2 = document.getElementById('s2');
+  address.value = s1.value + s2.value ;
+}
+
+</script>

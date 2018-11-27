@@ -1,0 +1,31 @@
+@charset "utf-8";
+/* CSS Document */
+.center h4{
+	text-align:center;
+	letter-spacing:5px;
+	color:#595959;
+	font-size:18px;
+}
+table,tr,td{
+	background-color:#f3f3f3;
+	border:1px solid #cdcdcd;
+	margin-bottom: 1%;
+	text-align: center;
+}
+.center_table{
+	border:5px solid #FFF;
+}
+.table_img img{
+	height:100px;
+	width:100px;
+}
+.table_case{
+	color:#42ba01;
+}
+.table_service{
+	color:#0171c0;
+}
+.table_wan{
+	clear:#888888;
+}
+	

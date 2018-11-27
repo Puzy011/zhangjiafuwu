@@ -1,0 +1,53 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="__CSS__/bootstrap/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="__CSS__/one.css" type="text/css" />
+<title>掌家门户后台</title>
+</head>
+
+
+<body>
+		<div class="tab">
+  
+				<div class="tab_box">
+					<div>
+					<form action="{:U('takebonus')}" method="post" class="form-horizontal">
+                        <div class="plot">
+                        <span style="color:#FF0000;">提现之前请先前往物业设置绑定银行账号</span>
+                                <span>收款户名</span>
+                                
+                                <input type="text" name="bankname" value="{$admin.bankname}" readonly="true" /><br />
+                                <span>收款账号</span>
+                                <input  type="text"  name="cardname" value="{$admin.cardname}" readonly="true"/><br />
+                                <span>收款银行</span>
+                                <input  type="text"  name="bankcard" value="{$admin.bankcard}" readonly="true"/><br />
+                               <span> 提现金额</span><input  type="text" name="money" value="{$withdraw.money}"  readonly="true"/>
+                                <span class="money">可提现金额：￥{$withdraw.money}</span> 
+                                <button id="submit" type="submit" target-form="form-horizontal" class="btn btn-primary ajax-post">确定</button>
+                                <button type="button" class="btn btn-default btn-lg active" onclick="javascript:history.back(-1);return false;">取消</button>	
+                                        	
+                         </div>
+                           </form>
+					</div>
+			
+				</div>
+			</div>
+			
+</body>
+</html>
+
+</block>
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+	<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:U('Index/index')}');
+	</script>
+</block>
+

@@ -1,0 +1,42 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>业主认证</h2>
+    </div>
+    <form action="{:U('Member/submitMember')}" method="post" class="form-horizontal" name="shareip">
+	
+		<div class="form-item">
+            <label class="item-label">详细地址（栋/楼/室）</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="address" value="{$data.address}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">业主姓名</label>
+            <div class="controls">
+            	<input type="hidden" name="id" value="{$data.id}">
+                <input type="text" class="text input-large" name="name" value="{$data.name}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">手机号码</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="phone" value="{$data.phone}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">认证</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+  <!-- </body> -->
+
+ </block>
+ <block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+ <script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:U('Member/index')}');
+</script>
+</block>

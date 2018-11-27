@@ -1,0 +1,39 @@
+<extend name="Public/base"/>
+
+<block name="body">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="__CSS__/four.css" />
+<link rel="stylesheet" type="text/css" href="__CSS__/cost.css" />
+<link rel="stylesheet" href="__CSS__/bootstrap/css/bootstrap.css" type="text/css" />
+
+<title>物业后台</title>
+</head>
+
+<body>
+<div class="tab">
+        	
+				<div class="tab_box">
+			
+                    <div>
+                    	<div class="Install">
+                        	<div class="right"><a href="{:U('User/upPic')}"><img src="__IMG__/touxianga.png" /></a></div>
+                            <div class="left">
+                            	物业名称：<span>{$user.nickname}</span><br />
+                                联系电话：<span>{$user.cellphone}</span><br />
+                                小区名称：<span>{$rid.residential_name}</span><br />
+                                小区地址：<span>{$rid.address}</span><br />
+                                提现银行：<span>{$user.bankname}</span><br />
+                                提现银行卡：<span>{$user.bankcard}</span><br />
+                                <a href="{:U('User/bindingBank')}"><img  style="width:30px;"src="__IMG__/tianjia.png" />&nbsp;&nbsp;&nbsp;绑定银行卡</a><br />
+                               
+                            </div>
+                        </div>
+					</div>
+		
+</div>
+</body>
+</html>
+</block>

@@ -1,0 +1,40 @@
+@charset "utf-8";
+/* CSS Document */
+.tab{ 
+	clear:both;
+    float: left;
+    overflow: hidden;
+	width:100%;
+}
+.tab .tab_menu { 
+	clear:both;
+}
+.tab .tab_menu li { 
+	float:left; 
+	text-align:center; 
+	cursor:pointer; 
+	list-style:none;
+	width:20%;
+	line-height:50px;
+	background:#F1F1F1;
+	border-bottom:none;
+}
+.tab .tab_menu li.hover { 
+	background:#DFDFDF;
+}
+.tab .tab_menu li.selected { 
+	color: #000; 
+	background: #FFF;
+}
+.tab .tab_box { 
+	clear:both; 
+	border: 5px solid white;
+}
+.tab .hide{
+	display:none
+}
+table,th,tr,td{
+	border:1px solid #cdcdcd;
+	color:#333333;
+	text-align:center;
+}

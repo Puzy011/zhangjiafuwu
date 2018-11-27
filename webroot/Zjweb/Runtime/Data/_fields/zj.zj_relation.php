@@ -1,0 +1,1 @@
+a:7:{i:0;s:2:"id";i:1;s:7:"main_id";i:2;s:7:"vice_id";i:3;s:4:"type";i:4;s:6:"status";s:3:"_pk";s:2:"id";s:5:"_type";a:5:{s:2:"id";s:7:"int(10)";s:7:"main_id";s:7:"int(10)";s:7:"vice_id";s:7:"int(10)";s:4:"type";s:7:"int(10)";s:6:"status";s:6:"int(4)";}}

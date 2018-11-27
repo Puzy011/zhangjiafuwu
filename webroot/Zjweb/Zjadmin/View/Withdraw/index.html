@@ -1,0 +1,42 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <!-- 标题栏 -->
+    <div class="main-title">
+        <h2>费用提现</h2>
+    </div> 
+    <div class="cf">
+        <div class="fl" name="withdraw" id="vo">
+                    <a class="btn" href="{:U('withdraw/takemoney')}">申请提现</a>
+        </div>
+    </div>    
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+    <table class="">
+    <thead>
+        <tr>
+            <th class="">用户名</th>
+            <th class="">金额</th>
+            <th class="">冻结金额</th> <!-- 已提现或者未提现 -->
+            </tr>
+    </thead>
+    <tbody>
+            <notempty name="withdraw">
+            <volist name="withdraw" id="vo">
+            <tr>
+                <td>{$vo.username}</td>    <!-- 小区名字 -->
+                <td>{$vo.price} </td>   <!-- 小区地址 -->
+                <td>{$vo.lock_price}</td> 
+            </tr>
+            </volist>
+            <else/>
+            <td colspan="9" class="text-center"> 抱歉！目前还没有可以提现的金额! </td>
+            </notempty>
+    </tbody>
+    </table>
+    </div>
+    <!-- 调用分页 -->
+    <div class="page">
+        {$_page}
+    </div>
+</block>

@@ -1,0 +1,67 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="__CSS__/four.css" />
+        <link rel="stylesheet" type="text/css" href="__CSS__/cost.css" />
+        <link rel="stylesheet" href="__CSS__/bootstrap/css/bootstrap.css" type="text/css" />
+
+        <title>物业后台</title>
+    </head>
+
+    <body>
+    <div class="tab">
+        <div class="tab_box">
+            <div class="cost_top">
+            </div>
+            <div class="cost_bottom">
+                <table id="travel">
+                    <thead>
+                    <tr>
+                        <th scope="col">区域</th>
+                        <th scope="col">进店时间</th>
+                        <th scope="col">出店时间</th>
+                        <th scope="col">用户名</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <notempty name="list">
+                        <volist name="list" id="vo">
+                            <tr class="">
+                                <td>{$vo.area}</td>
+                                <td>{$vo.come_time}</td>
+                                <td>{$vo.out_time}</td>
+                                <td>{$vo.member_name}</td>
+                            </tr>
+                        </volist>
+                        <else/>
+                        <td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+                    </notempty>
+                    </tbody>
+
+                </table>
+            </div>
+
+    </body>
+    <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="js/tab.js"></script>
+    <script src="js/cost_tab.js"></script>
+    </html>
+
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Goods/storeLive')}');
+    </script>
+</block>

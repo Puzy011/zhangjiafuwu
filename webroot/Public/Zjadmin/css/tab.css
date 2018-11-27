@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+body,ul,li{
+	margin:0;
+	padding:0;
+}
+.top{
+	height:80px;
+	/*background:#fff;
+	box-shadow: 0 0 22px #E2E2E2 inset, 2px 2px 3px #E8E8E8;*/
+	 box-shadow: 3px 3px 5px #999;  
+}
+.top img{
+	margin-left:127px;
+	margin-top:11px;
+}
+.tab{ 
+	/*clear:both;
+    float: left;
+    height: 230px;
+    overflow: hidden;
+    width: 310px;*/
+}
+.tab .tab_menu { 
+	clear:both;
+	position:fixed;
+	top:80px;
+	bottom:0;
+	left:0;
+	z-index:10;
+	width:302px;
+}
+.tab .tab_menu ul{
+	 box-shadow: 0px 2px 5px #999; 
+}
+.tab .tab_menu li { 
+	/*float:left; */
+	text-align:center; 
+	cursor:pointer; 
+	list-style:none; 
+	padding:1px 6px; 
+	border-bottom:1px solid #898989;
+	height:54px;
+	line-height:50px;
+	font-size:18px;
+}
+.tab .tab_menu li a{
+    text-decoration: none;
+}
+.tab .tab_menu li.hover { 
+	background:#DFDFDF;
+}
+.tab .tab_menu li.selected { 
+	background-color:#6a8ada;
+}
+.tab .tab_menu li.selected a{
+	color:#FFF;
+}
+.tab .tab_box {
+	background:url(../img/logo_beijing.png) no-repeat;
+	background-size:100%;
+	clear:both;
+	border-left:1px solid #898989;
+	position:absolute;
+	top:90px;
+	left:302px;
+	right:0;
+	bottom:0;
+	overflow:auto;
+}
+.tab .hide{
+	display:none
+}

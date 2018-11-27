@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://www.jq22.com/demo/jQuery-nav-top20160629/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title>蒂安漾</title>
+        <!--css-->
+        <link rel="stylesheet" href="__CSS__/rocketTop.css">
+     	<link rel="stylesheet" href="__CSS__/sass-compiled.css">
+        <link rel="stylesheet" href="__CSS__/Message.css">
+		<!--js-->
+		<script type="text/javascript" src="__JS__/jquery-1.js"></script>
+       <script src="__JS__/rocketTop.js"></script>
+       <script src="__JS__/tab.js"></script>
+	</head>
+	<body>
+		<div class="nav-height" id="navHeight">
+						<nav class="nav-wrap" id="nav-wrap">	  
+				    <ul class="clearfix">
+                    <li><a href="{:U('Index/index')}"><img class="logoimg" src="__IMG__/logo.png"></a></li>
+						<li><a class="" href="{:U('Index/index')}">首页</a></li>
+						<li><a class="active" href="{:U('Message/index')}">资讯</a></li>
+						<li><a class="" href="{:U('ProService/index')}">产品服务</a></li>
+						<li><a class="" href="{:U('AboutUs/index')}">关于我们</a></li>
+						<li><a class="" href="{:U('Investment/index')}">招商加盟</a></li>
+						<li><a href="https://www.zhangjiamenhu.com/admin.php?s=/Public/logout.html"><img class="logoimg_img" src="__IMG__/icon_login.png"></a></li>
+				    </ul>
+			 	</nav>
+		</div>
+      <div class="topbox">
+            <img src="__IMG__/picture_banner1.jpg">
+        </div>
+	 	<div id="section1" class="section-content">
+        <div class="message">
+         	<div class="recommend_all">
+              <notempty name="click">
+				<volist name="click" id="cl">
+              <div class="recommend">
+               <a href="{:U('Message/details?id='.$cl['id'])}">	
+               <div class="recommend_one">
+                	<img class="recommend_img_one" src="{$cl.pic}">
+                   <img class="recommend_img_two" src="__IMG__/icon_recommend.png">
+                    <span>{$cl.title}</span>
+                </div>
+                </a>
+               </div>
+                 </volist>
+            </notempty>
+           </div>
+           
+           
+        	<div class="message_us">
+                <div class="tab">
+				<div class="tab_menu">
+					<ul>
+						<li><a href="{:U('Message/index?sortid=1')}">衣</a></li>
+						<li><a href="{:U('Message/index?sortid=2')}">食</a></li>
+						<li><a href="{:U('Message/index?sortid=3')}">住</a></li>
+                        <li><a href="{:U('Message/index?sortid=4')}">行</a></li>
+					</ul>
+				</div>
+				<div class="tab_box">
+					<div>
+             
+          <notempty name="list">
+						<volist name="list" id="vo">
+                    	<div class="clothing">
+                        	<img  src="{$vo.pic}">
+                            <div class="clothing_span">
+                            	<h2>{$vo.title}</h2>
+                                <span>{$vo.desc}</span>
+                            </div>
+                            <div class="clothimg_all_time">
+                            	<span class="clothimg_time">{$vo.time|date="Y-m-d",###}</span>
+                                <span class="clothimg_look"><a href="{:U('Message/details?id='.$vo['id'])}">全文</a></span>
+                            </div>
+                        </div>
+                        </volist>
+                        </notempty>
+         
+					</div>
+		
+		
+           
+				</div>
+			</div>
+		</div>
+        	
+               
+            </div>
+            <div class="cr"></div>
+            </div>
+	 	</div>
+        
+				
+	 <include file="Public/footer" />
+	 	<!--内容信息导航吸顶及锚点引入JS-->
+	<div id="shape">
+		<div class="shapeColor">
+			<div class="shapeFly">
+			</div>
+		</div>
+	</div>
+
+</body></html>

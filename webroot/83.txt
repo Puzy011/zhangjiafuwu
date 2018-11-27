@@ -1,0 +1,1 @@
+{"MESSAGE":"{\"requestParam\":{\"deviceIds\":[\"25482\"],\"keyEffecDay\":\"365\"},\"header\":{\"signature\":\"813c8589-91a5-495e-9cab-b517b320f483\",\"token\":\"1494298012345\"}}"}

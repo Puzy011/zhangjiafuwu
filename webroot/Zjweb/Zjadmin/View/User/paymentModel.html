@@ -1,0 +1,28 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>设置缴费模板</h2>
+    </div>
+    <form action="{:U()}" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">水费<span>(元/顿)</span></label>
+            <div class="controls">
+                <input type="text" class="text" name="water" value="{$data.water}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">电费<span>(元/度)</span></label>
+            <div class="controls">
+                <input type="text" class="text" name="electricity" value="{$data.electricity}">
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+</block>

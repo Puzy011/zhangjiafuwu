@@ -1,0 +1,42 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>新增服务订单</h2>
+    </div>
+    <form action="{:U('add')}" method="post" class="form-horizontal" name="shareip">
+     <div class="form-item">
+     <select name="type">
+				   <option value="0">请选择服务类型</option>
+                    <volist name="_servicelist" id="service">
+					<option value="{$service.id}" >{$service.title}</option>
+					</volist>
+				</select>
+		</div>
+		<div class="form-item">
+            <label class="item-label">获取用户ID</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="member_id">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">备注</label>
+            <div class="controls">
+            	<input type="hidden" name="id" value="{$data.id}">
+                <input type="text" class="text input-large" name="describe">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">获取金额</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="price">
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+  <!-- </body> -->
+
+ </block>

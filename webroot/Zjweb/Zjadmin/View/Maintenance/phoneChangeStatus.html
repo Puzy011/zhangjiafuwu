@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>  
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">   
+<meta name="format-detection" content="telephone=no"/>
+<title>服务订单</title>
+<!--css-->
+<link rel="stylesheet" href="__CSS__/order.css">
+</head>
+
+<body>
+<div class="main">
+	<h3>服务订单</h3>
+	<form action="{:U(updateStatus)}" method="post" class="form-horizontal">
+    <div class="main_show">
+    <input type="hidden" name="id" value="{$data.id}">
+            	<input type="hidden" name="type" value="2">
+        服务类型<div class="show">{$data.title}</div>
+        小区名称<div class="show">{$data.residential_name}</div>
+        <div class="all">姓名<span>{$data.name}</span></div>
+        <div class="all">楼户号<span>{$data.floor}{$data.household}</span></div>
+        <div class="all">手机号<span>{$data.phone}</span></div>
+        <div class="all">时间<span>{$data.time|time_format}</span></div>
+        <div class="all">备注<span>{$data.describe}</span></div>
+         <div class="all_img">图片<img src="{$data.pic}" /></div>
+    </div>
+    <div class="both"></div>
+    <hr />
+    <div class="state">
+    	<h5>操作状态</h5>
+          <select name="status" style="height: 40px;width: 100px;margin-left: 12px;">
+                <eq name="data.status" value="0">
+                <option value="0">已接单</option>
+                </eq>
+                 <eq name="data.status" value="1">
+                <option value="1">进行中</option>
+                </eq>
+                 <eq name="data.status" value="-1">
+                <option value="-1">已完成</option>
+                </eq>
+                 <option value="0">已接单</option>
+                <option value="1">进行中</option>
+                <option value="-1">已完成</option>
+				</select>
+        <div class="btn">
+             	<button class="btn_on submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确定</button>
+            <button class="btn_fan" onclick="javascript:history.back(-1);return false;">返回</button>
+        </div>
+</div>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+.tab .tab_box {
+	background:url(../images/logo_beijing.png) no-repeat;
+	background-size:100%;
+
+}
+.plot{
+	padding:82px 150px;
+}
+.plot span{
+	font-size:20px;
+	display:block;
+	margin-top:20px;
+}
+.plot input{
+	margin-top:20px;
+	width:360px;
+	height:35px;
+	padding-left:10px;
+}
+.plot .money{
+	color:#ea6946;
+	font-size:16px;
+}
+.btn{
+	width:90px;
+	height:37px;
+    font-size:20px;
+	line-height:10px;
+	margin-top:120px;
+}
+.btn-primary{
+	margin-left:70px;
+}
+.btn-default{		
+	margin-left:38px;
+}
+.text{
+	color:#6a8ada;
+	font-size:16px;
+	margin-left:73px;
+	margin-top:15px;
+}
+	

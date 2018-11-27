@@ -1,0 +1,123 @@
+<extend name="Public/base" />
+
+
+<block name="body">
+	<script type="text/javascript" src="__JS__/new_geo.js"></script>
+	<script type="text/javascript" src="__STATIC__/uploadify/jquery.uploadify.min.js"></script>
+
+	<!-- 标签页导航 -->
+<div class="tab-wrap"style="padding-left: 20px;">
+	
+	
+	<div class="tab-content">
+	
+		<!-- 表单 -->
+	    <form id="form" action="{:U('neighborhood')}" method="post" class="form-horizontal">
+		<!-- 基础文档模型 -->
+		<div id="tab1" class="tab-pane in tab1">
+
+               <div class="form-item cf">
+            
+				<div class="form-item cf">
+                    <label class="item-label">内容<span class="check-tips"></span></label>
+                    <div class="controls">
+                        <label class="textarea input-large">
+                                <textarea name="content"></textarea>
+                                </label>                 
+					 </div>
+								   
+                 </div>
+				 <div class="form-item">
+				     <label class="item-label">图片<span class="check-tips"></span></label>
+                        <div class="controls">
+                        <!-- 上传图片到文件夹 -->
+							<input type="file" id="upload_picture_img"/>
+						<!-- 把上传到文件夹的图片的名字的值保存到数据库的表的相应字段名中 -->	
+							<input type="hidden" name="pic" id="cover_id_img" value="{$data['pic']}"/>
+						    <div class="upload-img-box">
+						    <!-- 如果不为空就显示图片 -->
+							    <notempty name="data['pic']">
+								    <div class="upload-pre-item"><img src="{$data['pic']}"/></div>
+							    </notempty>
+						    </div>
+						</div>
+		         </div>  
+
+				 </div>
+				
+				
+				
+
+		<div class="form-item cf">
+			<button class="btn submit-btn ajax-post hidden" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+			<input type="hidden" name="id" value="{$data.id|default=''}"/>
+			
+		</div>
+	</form>
+	</div>
+</div>
+</block>
+
+<block name="script">
+
+
+<script type="text/javascript">
+	//上传图片
+	/* 初始化上传插件 */
+	$("#upload_picture_img").uploadify({
+		"height"          : 30,
+		"swf"             : "__STATIC__/uploadify/uploadify.swf",
+		"fileObjName"     : "download",
+		"buttonText"      : "上传图片",
+		"uploader"        : "{:U('File/uploadPicture',array('session_id'=>session_id()))}",
+		"width"           : 120,
+		'removeTimeout'	  : 1,
+		'fileTypeExts'	  : '*.jpg; *.png; *.gif; *.jpeg;',
+		"onUploadSuccess" : uploadPictureimg,
+		'onFallback' : function() {
+			alert('未检测到兼容版本的Flash.');
+		}
+	});
+	
+	function uploadPictureimg(file, data){
+	   
+		var data = $.parseJSON(data);
+		var src = '';
+		if(data.status){
+			$("#cover_id_img").val(data.path);
+			src = data.url || '__ROOT__' + '/' + data.path;
+			$("#cover_id_img").parent().find('.upload-img-box').html(
+				'<div class="upload-pre-item"><img src="' + src + '"/></div>'
+			);
+		} else {
+			updateAlert(data.info);
+			setTimeout(function(){
+				$('#top-alert').find('button').click();
+				$(that).removeClass('disabled').prop('disabled',false);
+			},1500);
+		}
+	}
+	
+ $('#starttime').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+	    minView:2,
+	    autoclose:true
+    });
+
+    $('#endtime').datetimepicker({
+        format: 'yyyy-mm-dd',
+        language:"zh-CN",
+	    minView:2,
+	    autoclose:true
+    });
+    
+</script>
+
+	<script type="text/javascript">
+
+    //导航高亮
+    highlight_subnav('{:U('Neighborhood/neighborhoodList')}');
+	</script>
+</block>

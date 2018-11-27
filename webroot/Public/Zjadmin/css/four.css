@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+.Install{
+	padding:140px 180px;
+	font-size:22px;
+	font-family:"微软雅黑";
+}
+.right{
+	float:left;
+}
+.right img{
+	height:200px;
+	width:200px;
+}
+.left{
+	line-height:50px;
+	margin-left:319px;
+}
+.btn_ka{
+	background-color:#FFF;
+	color:#888888;
+	border:1px solid #888888;
+	font-size:18px;
+	font-family:"微软雅黑";
+	border-radius: 5px;
+	line-height:45px;
+	margin:0 140px;
+}
+.btn_ka:focus{
+	outline:none;
+}
+.left input{
+	height:35px;
+	width:120px;
+	border:none;
+	border-bottom:1px solid #888888;
+	padding-left:10px;
+	font-size:18px;
+}
+.left input:focus{
+	outline:none;
+	border-bottom:1px solid #888888;
+}
+.cost span{
+	font-size:18px;
+	color:#8888888;
+}

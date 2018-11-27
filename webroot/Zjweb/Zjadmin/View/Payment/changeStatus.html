@@ -1,0 +1,103 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>修改缴费状态</h2>
+    </div>
+    <form action="{:U(updateStatus)}" method="post" class="form-horizontal">
+    <div class="form-item">
+            <label class="item-label">订单编号</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="order_number" value="{$data.order_number}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">费用类型</label>
+            <div class="controls">
+            	<input type="hidden" name="id" value="{$data.id}">
+                <input type="text" class="text input-large" name="title" value="{$data.title}" readonly="true">
+            </div>
+        </div>
+         <div class="form-item">
+            <label class="item-label">业主名称</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="people" value="{$data.people}" readonly="true">
+            </div>
+        </div>
+         <div class="form-item">
+            <label class="item-label">小区名称</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="community" value="{$data.community}" readonly="true">
+            </div>
+        </div>
+         <div class="form-item">
+            <label class="item-label">业主地址</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="address" value="{$data.address}" readonly="true">
+            </div>
+        </div>
+          <div class="form-item">
+            <label class="item-label">物业名称</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="wname" value="{$data.wname}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">物业手机</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="wphone" value="{$data.wphone}" readonly="true">
+            </div>
+        </div>
+         <div class="form-item">
+            <label class="item-label">银行名称</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="bankname" value="{$data.bankname}" readonly="true">
+            </div>
+        </div>
+            <div class="form-item">
+            <label class="item-label">银行卡号</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="bankcard" value="{$data.bankcard}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">缴费金额</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="paymoney" value="{$data.paymoney}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">时间</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="time" value="{$data.time|time_format}" readonly="true">
+            </div>
+        </div>
+       
+         <div class="form-item">
+            <label class="item-label">状态</label>
+            <div class="controls">
+                <select name="status">
+                 <eq name="data.status" value="1">
+                <option value="1">缴费成功</option>
+                </eq>
+                 <eq name="data.status" value="-1">
+                <option value="-1">已转账</option>
+                </eq>
+                <option value="-1">已转账</option>
+				</select>
+            </div>
+        </div>
+        </eq>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Payment/nocooperation')}');
+    </script>
+</block>

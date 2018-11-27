@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据可视化</title>
+    <!--<link rel="stylesheet" href="infor.css">-->
+    <link rel="stylesheet" href="__CSS__/infor.css">
+    <script>
+
+        var setFontSize = function(){var width = document.documentElement.clientWidth;
+            var w = width/19.2;
+            var html = document.getElementsByTagName('html')[0];html.style.fontSize = w+'px';
+            var tsxinxi01H=$('.tsxinxi01_div').height()+'px';
+            $('.tsxinxi01').attr('style','height:'+tsxinxi01H);
+            var realfz = window.getComputedStyle(document.getElementsByTagName("html")[0]).fontSize.replace('px','');
+            console.log(realfz);
+            if (w !== realfz) {
+                document.getElementsByTagName("html")[0].style.cssText = 'font-size: ' +w+"px";
+            }
+            // var style;
+            // if(style=document.getElementById("forhtml")){
+            // style.parentNode.removeChild(style);
+            // }
+            // style = document.createElement("style");
+            // style.id="forhtml";
+            // document.head.appendChild(style);
+            // style.appendChild(document.createTextNode("html{font-size:"+w+"px !important;}"));
+        };
+        window.onload = function(){setFontSize()};
+        window.onresize = function(){setFontSize()};
+    </script>
+    <!--<script src="../扇形图/js/echarts .js"></script>-->
+    <script src="__JS__/echarts .js"></script>
+</head>
+<body>
+<div class="container_out">
+    <div class="container">
+        <div class="infor">
+            <div class="infor_left">
+                <div>
+                    <div class="alluser">
+                        <p>用户总量：{$postArr}</p>
+                        <div id="alluser_pic" style="width: 314px;height: 280px;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="allestate">
+                         <p>小区总数：2</p>
+                        <div>
+                            <div>
+                                <p>思明区</p>
+                                <p>2</p>
+                            </div>
+                            <div>
+                                <p>湖里区</p>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <p>集美区</p>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <p>翔安区</p>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <p>海沧区</p>
+                                <p>0</p>
+                            </div>
+                            <div>
+                                <p>同安区</p>
+                                <p>87</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="allsever">
+                        <p>邻里圈总数：2000</p>
+                        <div id="main_bar" style="width: 314px;height: 280px;"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="allfunction">
+                        <p>功能点击次数：837563</p>
+                        <div>
+                            <div><span>序号</span><span>页面路径</span><span>当日次数</span><span>昨日次数</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                            <div><span>1</span><span>总页面</span><span>120</span><span>130</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="infor_right">
+                <div>
+                    <p>服务累计订单：8776</p>
+                    <div class="infor_right_top">
+                        <div id="main_pie2" style="float: left;width: 157px;height: 280px"></div>
+                        <div id="main_pie3" style="float: left;width: 157px;height: 280px"></div>
+                    </div>
+                </div>
+                <div>
+                    <p>累计交易总额：8776</p>
+                    <div class="infor_right_top">
+                        <div id="main_pie4" style="float: left;width: 157px;height: 280px"></div>
+                        <div id="main_pie5" style="float: left;width: 157px;height: 280px"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="infooter">
+                <div class="infooter_left">
+                    <div>
+                        <p>门店总量：9</p>
+                        <div id="main_pie6" style="width: 314px;height: 280px"></div>
+                    </div>
+                    <div>
+                        <p>门店营业额：2000</p>
+                        <div id="main_pie7" style="width: 314px;height: 280px"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
+<!--用户总量-->
+<script>
+    var myChart = echarts.init(document.getElementById('alluser_pic'));
+    var option= {
+
+        tooltip: {
+            trigger: 'item',
+            formatter:"{a} <br/>{b}: {c} ({d}%)"
+        },
+        color:['#ffd237','#5abfff'],
+        legend:{
+//            orient:'vertical',
+//            align: 'bottom',
+            x:'left',
+            y:'bottom',
+            itemGap:15,
+            itemWidth:10,
+            itemHeight:10,
+            data:['今日增长','昨日增长']
+        },
+        series:[
+            {
+                name:'用户总量',
+                type:'pie',
+                selectedMode:'single',
+                radius:[0,'30%'],
+                label:{
+                    normal:{
+                        position:'inner'
+                    }
+                },
+                labelLine:{
+                    normal:{
+                        show:false
+                    }
+                }
+            },
+            {
+                name:'用户总量',
+                type:'pie',
+                radius:['44%','55%'],
+                center:['50%','50%'],
+                data:[
+                    {value:{$peoGdp},name:'今日增长'},
+                    {value:{$peothree},name:'昨日增长'}
+                ]
+            }
+
+        ]
+
+    };
+    myChart.setOption(option);
+    window.onresize = myChart.resize;
+</script>
+<!--邻里圈总数-->
+<script>
+    var myBar = echarts.init(document.getElementById('main_bar'));
+    var option_bar= {
+
+        tooltip: {
+            trigger: 'item',
+            formatter:"{a} <br/>{b}: {c} ({d}%)"
+        },
+        color:['#ffd237','#5abfff'],
+        legend:{
+//            orient:'vertical',
+//            align: 'bottom',
+            x:'left',
+            y:'bottom',
+            itemGap:15,
+            itemWidth:10,
+            itemHeight:10,
+            data:['今日增长','昨日增长']
+        },
+        series:[
+            {
+                name:'用户总量',
+                type:'pie',
+                selectedMode:'single',
+                radius:[0,'30%'],
+                label:{
+                    normal:{
+                        position:'inner'
+                    }
+                },
+                labelLine:{
+                    normal:{
+                        show:false
+                    }
+                }
+            },
+            {
+                name:'用户总量',
+                type:'pie',
+                radius:['44%','55%'],
+                center:['50%','50%'],
+                data:[
+                    {value:115,name:'今日增长'},
+                    {value:50,name:'昨日增长'}
+                ]
+            }
+
+        ]
+
+    };
+    myBar.setOption(option_bar);
+    window.onresize = myBar.resize;
+</script>
+<!--累计服务类订单——今日订单-->
+<script>
+    var myChart2 = echarts.init(document.getElementById('main_pie2'));
+    var option_pie2= {
+        title:{
+            text:'今日订单：200',
+            textStyle:{
+                color:'#5abfff',
+                fontStyle:'normal',
+                fontWeight:'300',
+                fontSize:'14'
+            }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter:"{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            y: 'bottom',
+            data:['物业报修','早餐','衣物送洗','洗车']
+        },
+        series:[
+            {
+                name:'用户总量',
+                type:'pie',
+//                selectedMode:'single',
+                radius:['50%','70%'],
+                avoidLabelOverlap: false,
+                label:{
+                    normal:{
+                        show:false,
+                        position:'center'
+
+                    },
+                    emphasis: {
+                        show: false,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine:{
+                    normal:{
+                        show:false
+                    }
+                },
+                color:['#a0d4f9','#cef29b','#ffb7dc','#ffda8a'],
+                data:[
+                    {value:115,name:'物业报修'},
+                    {value:50,name:'早餐'},
+                    {value:234,name:'衣物送洗'},
+                    {value:50,name:'洗车'}
+                ]
+            }
+        ]
+
+    };
+    myChart2.setOption(option_pie2);
+    window.onresize = myChart2.resize;
+</script>
+<!--累计服务类订单——昨日订单-->
+<script>
+    var myChart3 = echarts.init(document.getElementById('main_pie3'));
+    var option_pie3= {
+        title:{
+            text:'昨日订单：200',
+            textStyle:{
+                color:'#5abfff',
+                fontStyle:'normal',
+                fontWeight:'300',
+                fontSize:'14'
+            }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter:"{a} <br/>{b}: {c} ({d}%)"
+        },
+//        legend: {
+//            y: 'bottom',
+//            data:['物业报修','早餐','衣物送洗','洗车']
+//        },
+        series:[
+            {
+                name:'用户总量',
+                type:'pie',
+//                selectedMode:'single',
+                radius:['50%','70%'],
+                avoidLabelOverlap: false,
+                label:{
+                    normal:{
+                        show:false,
+                        position:'center'
+
+                    },
+                    emphasis: {
+                        show: false,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine:{
+                    normal:{
+                        show:false
+                    }
+                },
+                color:['#a0d4f9','#cef29b','#ffb7dc','#ffda8a'],
+                data:[
+                    {value:115,name:'物业报修'},
+                    {value:50,name:'早餐'},
+                    {value:234,name:'衣物送洗'},
+                    {value:50,name:'洗车'}
+                ]
+            }
+        ]
+
+    };
+    myChart3.setOption(option_pie3);
+    window.onresize = myChart3.resize;
+</script>
+<!--累计交易总额-——今日交易-->
+<script>
+    var myChart4 = echarts.init(document.getElementById('main_pie4'));
+    var option_pie4= {
+        title:{
+            text:'今日交易：200',
+            textStyle:{
+                color:'#5abfff',
+                fontStyle:'normal',
+                fontWeight:'300',
+                fontSize:'14'
+            }
+        },
+        color:['#a0d4f9','#cef29b','#ffb7dc','#ffda8a'],
+        legend: {
+            y: 'bottom',
+            data:['物业报修','早餐','衣物送洗','洗车']
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter:"{a} <br/>{b}: {c} ({d}%)"
+        },
+//        legend: {
+//            y: 'bottom',
+//            data:['物业报修','早餐','衣物送洗','洗车']
+//        },
+        series:[
+            {
+                name:'用户总量',
+                type:'pie',
+//                selectedMode:'single',
+                radius:['50%','70%'],
+                avoidLabelOverlap: false,
+                label:{
+                    normal:{
+                        show:false,
+                        position:'center'
+
+                    },
+                    emphasis: {
+                        show: false,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine:{
+                    normal:{
+                        show:false
+                    }
+                },
+                data:[
+                    {value:115,name:'物业报修'},
+                    {value:50,name:'早餐'},
+                    {value:234,name:'衣物送洗'},
+                    {value:50,name:'洗车'}
+                ]
+            }
+        ]
+
+    };
+    myChart4.setOption(option_pie4);
+    window.onresize = myChart4.resize;
+</script>
+<!--累计交易总额-——昨日交易-->
+<script>
+    var myChart5 = echarts.init(document.getElementById('main_pie5'));
+    var option_pie5= {
+        title:{
+            text:'昨日交易：200',
+            textStyle:{
+                color:'#5abfff',
+                fontStyle:'normal',
+                fontWeight:'300',
+                fontSize:'14'
+            }
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter:"{a} <br/>{b}: {c} ({d}%)"
+        },
+//        legend: {
+//            y: 'bottom',
+//            data:['物业报修','早餐','衣物送洗','洗车']
+//        },
+        series:[
+            {
+                name:'用户总量',
+                type:'pie',
+//                selectedMode:'single',
+                radius:['50%','70%'],
+                avoidLabelOverlap: false,
+                label:{
+                    normal:{
+                        show:false,
+                        position:'center'
+
+                    },
+                    emphasis: {
+                        show: false,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine:{
+                    normal:{
+                        show:false
+                    }
+                },
+                color:['#a0d4f9','#cef29b','#ffb7dc','#ffda8a'],
+                data:[
+                    {value:115,name:'物业报修'},
+                    {value:50,name:'早餐'},
+                    {value:234,name:'衣物送洗'},
+                    {value:50,name:'洗车'}
+                ]
+            }
+        ]
+
+    };
+    myChart5.setOption(option_pie5);
+    window.onresize = myChart5.resize;
+</script>
+<!--门店总量-->
+<script>
+    var myChart6 = echarts.init(document.getElementById('main_pie6'));
+    var option6= {
+
+//        tooltip: {
+//            trigger: 'item',
+//            formatter:"{a} <br/>{b}: {c} ({d}%)"
+//        },
+        color:['#ffd237','#5abfff'],
+        legend:{
+//            orient:'vertical',
+//            align: 'bottom',
+            x:'left',
+            y:'bottom',
+            itemGap:15,
+            itemWidth:10,
+            itemHeight:10,
+            data:['今日增长','昨日增长']
+        },
+        series:[
+            {
+                name:'用户总量',
+                type:'pie',
+                selectedMode:'single',
+                radius:[0,'30%'],
+                label:{
+                    normal:{
+                        position:'inner'
+                    }
+                },
+                labelLine:{
+                    normal:{
+                        show:false
+                    }
+                }
+            },
+            {
+                name:'用户总量',
+                type:'pie',
+                radius:['44%','55%'],
+                center:['50%','50%'],
+                data:[
+                    {value:115,name:'今日增长'},
+                    {value:50,name:'昨日增长'}
+                ]
+            }
+
+        ]
+
+    };
+    myChart6.setOption(option6);
+    window.onresize = myChart6.resize;
+</script>
+<!--门店营业额-->
+<script>
+    var myChart7 = echarts.init(document.getElementById('main_pie7'));
+    var option7= {
+
+//        tooltip: {
+//            trigger: 'item',
+//            formatter:"{a} <br/>{b}: {c} ({d}%)"
+//        },
+        color:['#ffd237','#5abfff'],
+        legend:{
+//            orient:'vertical',
+//            align: 'bottom',
+            x:'left',
+            y:'bottom',
+            itemGap:15,
+            itemWidth:10,
+            itemHeight:10,
+            data:['今日增长','昨日增长']
+        },
+        series:[
+            {
+                name:'用户总量',
+                type:'pie',
+                selectedMode:'single',
+                radius:[0,'30%'],
+                label:{
+                    normal:{
+                        position:'inner'
+                    }
+                },
+                labelLine:{
+                    normal:{
+                        show:false
+                    }
+                }
+            },
+            {
+                name:'用户总量',
+                type:'pie',
+                radius:['44%','55%'],
+                center:['50%','50%'],
+                data:[
+                    {value:115,name:'今日增长'},
+                    {value:50,name:'昨日增长'}
+                ]
+            }
+
+        ]
+
+    };
+    myChart7.setOption(option7);
+    window.onresize = myChart7.resize;
+</script>
+
+
+
+
+
+
+

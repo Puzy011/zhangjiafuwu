@@ -1,0 +1,71 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>业主列表</h2>
+	</div>
+        <!-- 高级搜索 -->
+		 <form action="{:U()}" method="post" class="form-horizontal">
+	  <div class="form-item">
+            
+				<label>业主姓名</label>
+				<input type="text" name="name" value="">
+				<label>手机号码</label>
+				<input type="text" name="phone" value="">
+				<select name="authentication">
+                	<option value="0">认证状态</option>
+                	<option value="1">未认证</option>
+					<option value="2">已认证</option>
+				</select>
+				<button class="btn" type="submit" target-form="form-horizontal">查询</button>
+				<a class="btn" href="{:U('Member/updatePaymentOrder')}">重置</a>
+        </div>
+        </form>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<th class="">姓名</th>
+		<th class="">手机号码</th>
+		<th class="">地址</th>
+		<th class="">业主是否认证</th>
+		<th class="">填写缴费单</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="list">
+		<volist name="list" id="vo">
+		<tr>
+			<td>{$vo.name}</td>
+			<td><span>{$vo.phone}</span></td>
+			<td><span>{$vo.address}</span></td>
+			<td><eq name="vo.authentication" value="1">
+			<span>未认证</span>
+			<else/>
+			<span>已认证</span>
+			</eq>
+			</td>
+			<td><a href="{:U('Member/paymentOrder?id='.$vo['id'])}" class="confirm">填写</a></td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+	<script type="text/javascript">
+    //导航高亮
+    highlight_subnav('{:U('Member/paymentList')}');
+	</script>
+</block>

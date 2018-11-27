@@ -1,0 +1,98 @@
+<extend name="Public/base" />
+
+<block name="body">
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link rel="stylesheet" type="text/css" href="__CSS__/four.css" />
+        <link rel="stylesheet" type="text/css" href="__CSS__/cost.css" />
+        <link rel="stylesheet" href="__CSS__/bootstrap/css/bootstrap.css" type="text/css" />
+
+        <title>物业后台</title>
+    </head>
+
+    <body>
+    <div class="tab">
+        <div class="tab_box">
+            <div class="cost_top">
+                <form action="{:U()}" method="post" class="form-horizontal">
+                    <select class="slt_two" name="area">
+                        <option value="1">小区升序</option>
+                        <option value="2">小区降序</option>
+                    </select>
+                    <select id="" class="slt_two" name="house">
+                        <option value="1">楼层升序</option>
+                        <option value="2">楼层降序</option>
+                    </select>
+                    <button class="btn" type="submit" target-form="form-horizontal">查询</button>
+                </form>
+            </div>
+            <div class="cost_bottom">
+                <table id="travel">
+                    <thead>
+                    <tr>
+                        <th scope="col">业主名</th>
+                        <th scope="col">信誉积分</th>
+                        <th scope="col">手机号</th>
+                        <th scope="col">身份证号码</th>
+                        <th scope="col">所在地区</th>
+                        <th scope="col">户号/楼号</th>
+                        <th scope="col">认证状态</th>
+                        <th scope="col">注册时间</th>
+                        <th scope="col">操作</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <notempty name="list">
+                        <volist name="list" id="vo">
+                            <form action="{:U(submitMemberStore)}" method="post" class="form-horizontal">
+                                <tr class="">
+                                    <td>{$vo.name}</td>
+                                    <td>{$vo.credit_score}</td>
+                                    <td>{$vo.mobile}</td>
+                                    <td>{$vo.id_card}</td>
+                                    <td>{$vo.area}</td>
+                                    <td>
+                                        <input type="hidden" name="id" value="{$vo.id}">
+                                        <input  type="text" name="floor" value="{$vo.floor}"/>号楼<input type="text" name="household" value="{$vo.household}"/>室</td>
+                                    </td>
+                                    <td><eq name="vo.is_auth" value="1">
+                                        <button class="tabl payment" type="submit" target-form="form-horizontal">点击认证</button>
+                                        <else/>
+                                        <span>已认证</span>
+                                    </eq>
+                                    </td>
+                                    <td>{$vo.reg_time}</td>
+                                    <td><a  style="color:#FF0000;" class="ajax-get" href="{:U('Member/saveCancelStore?id='.$vo['id'])}">删除</a></td>
+                                </tr>
+                            </form>
+                        </volist>
+                        <else/>
+                        <td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+                    </notempty>
+                    </tbody>
+
+                </table>
+            </div>
+
+    </body>
+    <script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="js/tab.js"></script>
+    <script src="js/cost_tab.js"></script>
+    </html>
+
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+    <script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Member/memberStore')}');
+    </script>
+</block>

@@ -1,0 +1,49 @@
+<extend name="Public/base"/>
+
+<block name="body">
+    <div class="main-title">
+        <h2>修改设备</h2>
+    </div>
+    <form action="{:U(updateDevice)}" method="post" class="form-horizontal">
+    <div class="form-item cf">
+				 <label class="item-label">所属小区：</label>
+                 <div class="controls">   
+				<select name="residential_id">
+                <option value="{$data.residential_id}">{:get_residential($data['residential_id'])}</option>
+					<volist name="residential" id="residential">
+						<option value="{$residential.id}">{$residential.residential_name}</option>
+					</volist>
+				</select>
+				</div>
+				</div>
+		 <div class="form-item">
+            <label class="item-label">设备ID</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="deviceId" value="{$data.device_id}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">设备名称</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="deviceName" value="{$data.device_name}" readonly="true">
+            </div>
+        </div>
+         <div class="form-item">
+            <label class="item-label">设备SN码</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="deviceCode" value="{$data.device_code}" readonly="true">
+            </div>
+        </div>
+        <div class="form-item">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</block>
+
+<block name="script">
+    <script type="text/javascript">
+        //导航高亮
+        highlight_subnav('{:U('Device/index')}');
+    </script>
+</block>

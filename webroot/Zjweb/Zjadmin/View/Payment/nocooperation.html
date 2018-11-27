@@ -1,0 +1,80 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>缴费列表</h2>
+	</div> 
+	<div class="cf">
+		<div class="fl">
+		            <a class="btn" href="{:U('Payment/select_table')}">导出费用单</a>
+		</div>
+		<!-- 选择费用类型 -->
+		 <form action="{:U('Payment/nocooperation')}" method="post" class="form-horizontal">
+	    <div class="form-item">
+                <select name="payment_type">
+				   <option value="0">请选择费用类型</option>
+    				<volist name="paytypelist" id="payment_type">
+					<option value="{$payment_type.id}" >{$payment_type.title}</option>
+					</volist>
+                </select> 			
+                	 <select name="status">
+                	<option value="-4">状态</option>
+					<option value="1">缴费成功</option>
+					<option value="-1">已转账</option>
+				</select>		
+
+				<button class="btn" type="submit" target-form="form-horizontal">查询</button>
+        </div>
+        </form>
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+        <th class="">订单编号</th>
+		<th class="">小区名字</th>
+		<th class="">业主</th>
+		<th class="">费用类型</th>
+		<th class="">业主地址</th>
+		<th class="">金额</th>
+		<th class="">缴费时间</th>
+		<th class="">缴费状态</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="payment">
+		<volist name="payment" id="vo">
+		<tr>
+			<td>{$vo.order_number}</td>
+            <td>{$vo.community}</td> 
+			<td>{$vo.people} </td> 		
+			<td>{$vo.title}</td>
+			<td>{$vo.address}</td>
+			<td>{$vo.paymoney}</td>
+			<td>{$vo.time|time_format}</td>
+			<td><eq name="vo.status" value="1">
+				<a href="{:U('Payment/changeStatus?id='.$vo['id'])}" class="confirm" style="color:#0000E3;">缴费成功</a>
+				</eq>
+				<eq name="vo.status" value="-1">
+				<span style="color:#FF0000;">已转账</span>
+				</eq>
+				</td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> 啊哦！该类型的费用暂时还没有哦! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+</block>

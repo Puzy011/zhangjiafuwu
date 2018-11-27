@@ -1,0 +1,10 @@
+* {margin:0; padding:0}
+
+ul.line{
+	height: 30px;
+	background-color: #6a8ada;
+	overflow: hidden;
+	color:#FFF;
+	font-size:16px;
+} 
+ul.line li{height:30px;text-indent:15px; font-size:12px; line-height:30px;list-style:none} 

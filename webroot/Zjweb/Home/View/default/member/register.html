@@ -1,0 +1,19 @@
+<html>
+<title>业主注册</title>
+<body>
+<form action="{:U('Member/submitMember')}" method="post" class="form-horizontal">
+<div>姓名：<input type="text" name="name"></div>
+<div>手机号码：<input type="text" name="phone"></div>
+<div>详细地址：<input type="text" name="address"></div>
+<div>
+	<select name="residential" id="residential_id"  >
+			<option value="0" >请选择小区</option>
+            <volist name="Residential" id="residential">
+			<option value="{$residential['id']}" >{$residential.name}</option>
+			</volist>						  
+	</select>
+</div>
+<div><button type="submit" class="btn submit-btn ajax-post" target-form="form-horizontal">提交</button></div>
+</form>
+</body>
+</html>

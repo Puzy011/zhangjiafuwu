@@ -1,0 +1,69 @@
+<extend name="Public/base" />
+
+<block name="body">
+	<!-- 标题栏 -->
+	<div class="main-title">
+		<h2>小区列表</h2>
+	</div>
+	<div class="cf">
+		<div class="fl">
+            <a class="btn" href="{:U('Residential/add')}">新 增</a>
+            <button class="btn ajax-post confirm" target-form="ids" url="{:U("Residential/setStatus",array("status"=>-1))}">删 除</button>
+        </div>
+    </div>
+    <!-- 数据列表 -->
+    <div class="data-table table-striped">
+	<table class="">
+    <thead>
+        <tr>
+		<th class="row-selected row-selected"><input class="check-all" type="checkbox"/></th>
+		<th class="">ID</th>
+		<th class="">小区名称</th>
+		<th class="">省</th>
+		<th class="">市</th>
+		<th class="">区</th>
+		<th class="">地址</th>
+		<th class="">状态</th>
+		<th class="">操作</th>
+		</tr>
+    </thead>
+    <tbody>
+		<notempty name="_list">
+		<volist name="_list" id="vo">
+		<tr>
+            <td><input class="ids" type="checkbox" name="id[]" value="{$vo.id}" /></td>
+			<td>{$vo.id} </td>
+			<td>{$vo.residential_name}</td>
+			<td>{:getRegion($vo['province'])}</td>
+			<td>{:getRegion($vo['city'])}</td>
+			<td><span>{:getRegion($vo['county'])}</span></td>
+			<td><span>{$vo.address}</span></td>
+			<td><eq name="vo.status" value="0">
+				<a href="{:U('Residential/changeStatus?method=resume&id='.$vo['id'])}" class="ajax-get">禁用</a>
+				<else/>
+				<a href="{:U('Residential/changeStatus?method=forbid&id='.$vo['id'])}" class="ajax-get">启用</a>
+				</eq></td>
+			<td><a href="{:U('Residential/edit?ids='.$vo['id'])}" class="confirm">修改</a>
+				<a href="{:U('Residential/setStatus?status=-1&id='.$vo['id'])}" class="confirm ajax-get">删除</a>
+                </td>
+		</tr>
+		</volist>
+		<else/>
+		<td colspan="9" class="text-center"> aOh! 暂时还没有内容! </td>
+		</notempty>
+	</tbody>
+    </table>
+	</div>
+    <div class="page">
+        {$_page}
+    </div>
+</block>
+
+<block name="script">
+	<script src="__STATIC__/thinkbox/jquery.thinkbox.js"></script>
+
+	<script type="text/javascript">
+	  //导航高亮
+    highlight_subnav('{:U('Residential/index')}');
+	</script>
+</block>

@@ -1,0 +1,1 @@
+SELECT zj_member.id,`idcard`,`name`,`residential_name`,`phone`,`floor`,`household`,`residential_name`,zj_member.status,`authentication`,`acreage`,`payment`,`openid`,`mtype` FROM `zj_member` INNER JOIN zj_residential on zj_member.residential_id = zj_residential.id  WHERE `residential_id` IN ('16','15','14','13') AND zj_member.status = 1 ORDER BY id DESC LIMIT 0,10  

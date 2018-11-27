@@ -1,0 +1,160 @@
+<extend name="Public/base"/>
+
+<block name="body">
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="__CSS__/bootstrap/css/bootstrap.css" type="text/css" />
+<link rel="stylesheet" href="__CSS__/three.css" type="text/css" />
+
+<script type="text/javascript">
+ function account()
+ {
+ var a=document.all.a.value;
+ var b=document.all.b.value;
+ var c=a*b;
+ document.all.c.value=c;
+ }
+ function accounts()
+ {
+ var j=document.all.j.value;
+ var k=document.all.k.value;
+ var l=j*k;
+ document.all.l.value=l;
+ }
+ </script>
+<body>
+   
+    <form action="{:U('paymentOrder')}" method="post" class="form-horizontal">
+					
+              				<table width="628" border="1" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <th height="47" colspan="7" scope="col">小区缴费通知单</th>
+                          </tr>
+                          <tr>
+                            <td width="185" height="43" >交款人</td>
+                            <td colspan="2" ><input type="text" name="name" value="{$data.name}"/></td>
+                            <td width="45" >户号</td>
+                            <td colspan="2" ><input type="text" name="address" value="{$data.floor}{$data.household}"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="42">收费项目</td>
+                            <td width="56">上月</td>
+                            <td width="46">本月</td>
+                            <td>实用</td>
+                            <td width="74">单价</td>
+                            <td width="51">金额</td>
+                          </tr>
+                          <tr>
+                            <td height="43"><input type="hidden" name="id" value="{$data.id}">电费</td>
+                            <td><input type="text" name="dflast_month"/></td>
+                            <td><input type="text" name="dfthis_monh"/></td>
+                            <td><input id="a" type="text" name="dfpractical"/></td>
+                            <td><input id="b" name="dfprice" type="text"/ onkeyup="acount()"></td>
+                            <td><input type="button" onclick="account()" value="点击="><input id="c" type="text" name="dfyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="51">水费(15T以内和15以上)</td>
+                            <td><input type="text" name="sflast_month"/></td>
+                            <td><input type="text" name="sfthis_monh"/></td>
+                            <td><input id="j" type="text" name="sfpractical"/></td>
+                            <td><input id="k" name="sfprice" type="text"/ onkeyup="acount()s"></td>
+                            <td><input type="button" onclick="accounts()" value="点击="><input id="l" type="text" name="sfyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="43">公共电分摊</td>
+                            <td colspan="5"><input type="text" name="ayprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="46">公共水分摊</td>
+                            <td colspan="5"><input type="text" name="byprice"/></td>
+                           
+                          </tr>
+                          <tr>
+                            <td height="49">电梯分摊</td>
+                            <td colspan="5"><input type="text" name="cyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="44">水泵电分摊</td>
+                            <td colspan="5"><input type="text" name="dyprice"/></td>
+                           
+                          </tr>
+                          <tr>
+                            <td height="48">变压器损</td>
+                            <td colspan="5"><input type="text" name="eyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="50">峰值分摊</td>
+                            <td colspan="5"><input type="text" name="fyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="51">恩电梯公用电</td>
+                            <td colspan="5"><input type="text" name="gyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="55">本电梯公用水</td>
+                            <td colspan="5"><input type="text" name="hyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="45"></td>
+                            <td>面积</td>
+                            <td colspan="2">平方/月</td>
+                            <td>月份</td>
+                            <td>金额</td>
+                          </tr>
+                          <tr>
+                            <td height="60">管理费</td>
+                            <td><input type="text" name="" value="{$data.acreage}"/></td>
+                            <td colspan="2"><input type="text" name="iprice"/></td>
+                            <td><input type="text" name="imonth"/></td>
+                            <td><input type="text" name="iyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="73">公共维修金</td>
+                            <td><input type="text" name=""/></td>
+                            <td colspan="2"><input type="text" name="jprice"/></td>
+                            <td><input type="text" name="jmonth"/></td>
+                            <td><input type="text" name="jyprice"/></td>
+                            
+                          </tr>
+                          <tr>
+                            <td height="94" colspan="7">合计人民币:<input type="text"/>
+                            <span style="padding-left:120px;">截止时间：<input name="endtime" type="date"  style="width:120px;" /></span>
+                            </td>
+                          </tr>
+                  </table>
+    <div style="padding-left:500px;" class="form-item">
+            <button  class="btn submit-btn" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
+</body>
+<script src="js/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script src="js/tab.js"></script>
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+  $(".flip").mouseover(function(){
+    $(this).next("div").slideDown(500);
+  });
+  $(".content").mouseleave(function(){
+    $(this).children("div").slideUp(500);
+  });
+});
+</script>
+</html>
+
+    
+   
+</block>
+
